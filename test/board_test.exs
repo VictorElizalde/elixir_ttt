@@ -5,7 +5,7 @@ defmodule BoardTest do
     @board [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     test "creates a board" do
-        board = new_board
-        assert board == @board 
+        board = new_board(3)
+        assert board == @board
     end
 end

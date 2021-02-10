@@ -30,12 +30,12 @@ defmodule Ui do
         "|" <> row_string
     end
 
-    def print_user_instructions do
-        print_line "Select a position between 1 and 9"
+    def print_player_instructions(instruction) do
+        print_line instruction
     end
 
-    def print_invalid_move do
-        print_line "Invalid move, try again"
+    def print_invalid_player_move(invalid_move) do
+        print_line invalid_move
     end
 
     def print_tie do
@@ -44,9 +44,5 @@ defmodule Ui do
 
     def print_winner(winner_token) do
         print_line "Winner is #{winner_token}!"
-    end
-
-    def print_computer_turn do
-        print_line "Computer's turn"
     end
 end

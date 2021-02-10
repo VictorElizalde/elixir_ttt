@@ -1,7 +1,11 @@
 defmodule UiTest do
     use ExUnit.Case, async: true
     import Ui
+    import Player
     import ExUnit.CaptureIO
+
+    @human  create_player("X", "human")
+    @computer create_player("O", "computer")
 
     test "prints 3x3 board" do
         assert capture_io(fn ->
@@ -11,15 +15,21 @@ defmodule UiTest do
 
     test "prints user instructions to make a move" do
         assert capture_io(fn ->
-          print_user_instructions()
+          print_player_instructions(@human.player_instruction)
         end) == "Select a position between 1 and 9\n" 
     end
 
-    test "prints invalid move" do
+    test "prints computer instructions to make a move" do
         assert capture_io(fn ->
-          print_invalid_move()
-        end) == "Invalid move, try again\n"
+          print_player_instructions(@computer.player_instruction)
+        end) == "Computer's turn" 
     end
+
+    # test "prints invalid move" do
+    #     assert capture_io(fn ->
+    #       print_invalid_move()
+    #     end) == "Invalid move, try again\n"
+    # end
 
     test "prints tie" do
         assert capture_io(fn ->
@@ -31,11 +41,5 @@ defmodule UiTest do
         assert capture_io(fn ->
           print_winner("X")
         end) == "Winner is X!\n"
-    end
-
-    test "prints computer turn" do
-        assert capture_io(fn ->
-          print_computer_turn()
-        end) == "Computer's turn\n"
     end
 end

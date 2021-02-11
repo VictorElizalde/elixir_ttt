@@ -26,6 +26,8 @@ defmodule BoardTest do
 
   test "adds marker to the board" do
     board = @board
-    assert set_token_at(board, 1, "X") == ["X", 2, 3, 4, 5, 6, 7, 8, 9]
+    assert set_token_at(board, 1, "X") == ["X", 2, 3, 
+                                            4, 5, 6, 
+                                            7, 8, 9]
   end
 end

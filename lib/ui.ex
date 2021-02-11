@@ -19,10 +19,10 @@ defmodule Ui do
   end
 
   def row_to_string(board, first, last) do
-    get_row(board, first, last) |> add_cell_dividers
+    get_row(board, first, last) |> add_position_dividers
   end
 
-  def add_cell_dividers(row) do
+  def add_position_dividers(row) do
     row_string = Enum.map(row, fn(n) -> 
       " " <> to_string(n) <> " |"
     end)

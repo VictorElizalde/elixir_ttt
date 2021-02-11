@@ -1,7 +1,6 @@
 defmodule RefereeTest do
   use ExUnit.Case, async: true
   import Referee
-  import Board
 
   @board [1, 2, 3, 4, 5, 6, 7, 8, 9]
 

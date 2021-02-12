@@ -3,8 +3,8 @@ defmodule Board do
     Range.new(1, (rows * rows)) |> Enum.to_list
   end
 
-  def set_token_at(board, cell_index, token) do
-    List.replace_at(board, cell_index-1, token)
+  def set_token_at(board, position_index, token) do
+    List.replace_at(board, position_index - 1, token)
   end
 
   def rows(board) do
@@ -36,14 +36,14 @@ defmodule Board do
   end
 
   def get_column(board, index, count, num_rows) do
-    Enum.map(count, fn(n) -> (get_cell_value(board, (index + (n * num_rows)))) end)
+    Enum.map(count, fn(n) -> (get_position_value(board, (index + (n * num_rows)))) end)
   end
 
-  def get_diagonal(board, index, step_val, count) do
+  def get_diagonal(board, index, step_value, count) do
     if index == 0 do
-      Enum.map(count, fn(n) -> (get_cell_value(board, (index + n) * step_val)) end)
+      Enum.map(count, fn(n) -> (get_position_value(board, (index + n) * step_value)) end)
     else
-      Enum.map(count, fn(n) -> (get_cell_value(board, index + (n * step_val))) end)
+      Enum.map(count, fn(n) -> (get_position_value(board, index + (n * step_value))) end)
     end
   end
 
@@ -55,7 +55,7 @@ defmodule Board do
     Range.new(0, num_rows - 1) |> Enum.to_list
   end
 
-  def get_cell_value(board, index) do
+  def get_position_value(board, index) do
     Enum.at(board, index)
   end
 end

@@ -1,3 +1,3 @@
 defmodule ComputerPlayer do
-    defstruct marker: "O"
+  defstruct token: "O"
 end

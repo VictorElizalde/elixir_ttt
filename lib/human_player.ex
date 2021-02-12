@@ -1,3 +1,3 @@
 defmodule HumanPlayer do
-    defstruct marker: "X"
+  defstruct token: "X"
 end

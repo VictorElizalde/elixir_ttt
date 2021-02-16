@@ -30,6 +30,10 @@ defmodule ValidatorsTest do
     assert valid_move?(board, "1")
   end
 
+  test "returns true for moves inside of the range" do
+    assert within_range?(@board, 9)
+  end
+
   test "returns false for moves outside of the range" do
     refute within_range?(@board, 16)
   end
@@ -37,7 +41,7 @@ defmodule ValidatorsTest do
   test "prints invalid move message for bad move input" do
     assert capture_io(fn ->
       validate_move(["X", 2, 3, 4, 5, 6, 7, 8, 9], "asdf", @player)
-    end) == "Invalid move, try again\nSelect a position between 1 and 9\n" 
+    end) == "Invalid move, try again\n" 
   end
 
   test "adds move to board when valid" do

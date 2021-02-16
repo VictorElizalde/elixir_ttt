@@ -43,4 +43,8 @@ defmodule Player do
   def create_computer_player(token) do
     %ComputerPlayer{token: token}
   end
+
+  def player_types do
+    [@human_player, @computer_player]
+  end
 end

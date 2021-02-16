@@ -69,4 +69,11 @@ defmodule UiTest do
       print_winner("X")
     end) == "Winner is X!\n"
   end
+
+  test "returns player move input" do
+    capture_io([input: "1\n", capture_prompt: false], fn ->
+      input = get_input()
+      assert input == "1"
+    end)
+  end
 end

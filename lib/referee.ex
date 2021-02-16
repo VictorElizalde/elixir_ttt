@@ -22,10 +22,6 @@ defmodule Referee do
     Enum.all?(board, fn(x) -> is_integer(x) end)
   end
 
-  def available_moves(board) do
-    Enum.filter_map(board, fn(x) -> is_integer(x) end, &(&1 - 1))
-  end
-
   def tie?(board) do
     !winning_game?(board) || board_full?(board)
   end

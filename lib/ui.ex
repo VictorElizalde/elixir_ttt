@@ -45,4 +45,9 @@ defmodule Ui do
   def print_winner(winner_token) do
     print_line "Winner is #{winner_token}!"
   end
+
+  def get_input do
+    input = IO.gets "> "
+    String.strip(input, ?\n)
+  end
 end

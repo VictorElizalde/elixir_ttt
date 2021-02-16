@@ -15,7 +15,7 @@ defmodule Ui do
   end
 
   def print_line(text) do
-    IO.puts text 
+    IO.puts text
   end
 
   def row_to_string(board, first, last) do

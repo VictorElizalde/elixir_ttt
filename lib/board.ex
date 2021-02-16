@@ -58,4 +58,8 @@ defmodule Board do
   def get_position_value(board, index) do
     Enum.at(board, index)
   end
+
+  def available_position?(board, position_index) do
+    Enum.at(board, position_index) |> is_integer
+  end
 end

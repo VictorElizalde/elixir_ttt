@@ -2,9 +2,9 @@ defmodule Validator do
   import Ui
   import Board, only: [available_position?: 2, set_token_at: 3]
 
-  def validate_move(board, position, token, player) do
+  def validate_move(board, position, player) do
     if valid_move?(board, position) do
-      play_valid_move(board, position, token)
+      play_valid_move(board, position, player.token)
     else
       handle_invalid_move(player)
       board
@@ -21,10 +21,10 @@ defmodule Validator do
     print_player_instructions(PlayerInstruction.get_instruction(player))
   end
 
-  def get_move(board, token, player) do
+  def get_move(board, player) do
     print_player_instructions(PlayerInstruction.get_instruction(player))
     position = get_input()
-    validate_move(board, position, token, player)
+    validate_move(board, position, player)
   end
 
   def within_range?(board, position_index) do

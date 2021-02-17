@@ -30,7 +30,7 @@ defmodule Game do
   end
 
   def current_player(board, player_x, player_o) do
-    if player_x_turn?(board), do: player_x, else: player_o
+    if player_x_turn?(board), do: player_o, else: player_x
   end
 
   def game_over_message(board) do
@@ -43,6 +43,6 @@ defmodule Game do
   end
 
   def winning_token(board) do
-    if player_x_turn?(board), do: "O", else: "X"
+    if player_x_turn?(board), do: "X", else: "O"
   end
 end

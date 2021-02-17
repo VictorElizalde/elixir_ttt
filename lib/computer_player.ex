@@ -27,7 +27,8 @@ defmodule ComputerPlayer do
   def minimax(board, token, depth) do
     Enum.map(available_moves(board), fn (position) ->
       new_board = set_token_at(board, position + 1, token)
-      %{position: position, score: apply_minimax(new_board, token, depth, position)}
+      move = apply_minimax(new_board, token, depth, position)
+      %{position: position, score: move.score}
     end) |> best_score(current_player_token(board), token)
   end
 

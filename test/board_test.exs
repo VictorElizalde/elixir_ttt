@@ -24,7 +24,7 @@ defmodule BoardTest do
     assert diagonals(board) == [[1, 5, 9], [3, 5, 7]] 
   end
 
-  test "adds marker to the board" do
+  test "adds token to the board" do
     board = @board
     assert set_token_at(board, 1, "X") == ["X", 2, 3, 
                                             4, 5, 6, 
@@ -35,6 +35,13 @@ defmodule BoardTest do
     board = ["X", 2, 3,
               4, 5, 6,
               7, 8, 9]
-    refute available_position?(board, 0)
+    refute available_position?(board, 1)
+  end
+
+  test "position is available on max position" do
+    board = ["X", 2, 3,
+              4, 5, 6,
+              7, 8, 9]
+    assert available_position?(board, 9)
   end
 end

@@ -13,12 +13,11 @@ defmodule Validator do
 
   def play_valid_move(board, position, token) do
     position_index = get_position_index(position)
-    set_token_at(board, position_index, token) 
+    set_token_at(board, position_index, token)
   end
 
   def handle_invalid_move(player) do
     print_invalid_player_move(PlayerInvalidInstruction.get_invalid_instruction(player))
-    print_player_instructions(PlayerInstruction.get_instruction(player))
   end
 
   def get_move(board, player) do
@@ -28,7 +27,7 @@ defmodule Validator do
   end
 
   def within_range?(board, position_index) do
-    (position_index >= 1) && (position_index < (length board))
+    (position_index >= 1) && (position_index <= (length board))
   end
 
   def valid_position_index?(board, position_index) do

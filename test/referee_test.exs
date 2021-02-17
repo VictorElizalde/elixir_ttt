@@ -4,13 +4,6 @@ defmodule RefereeTest do
 
   @board [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-  test "lists indexes of all available moves" do
-    board = ["X", 2, 3, 
-              4, 5, 6, 
-              7, 8, 9]
-    assert available_moves(board) == [1, 2, 3, 4, 5, 6, 7, 8]
-  end
-
   test "returns true because no more moves available" do
     board = ["O", "X", "X", 
              "X", "X", "O", 

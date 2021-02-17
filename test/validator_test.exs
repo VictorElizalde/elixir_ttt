@@ -36,12 +36,12 @@ defmodule ValidatorsTest do
 
   test "prints invalid move message for bad move input" do
     assert capture_io(fn ->
-      validate_move(["X", 2, 3, 4, 5, 6, 7, 8, 9], "asdf", "O", @player)
+      validate_move(["X", 2, 3, 4, 5, 6, 7, 8, 9], "asdf", @player)
     end) == "Invalid move, try again\nSelect a position between 1 and 9\n" 
   end
 
   test "adds move to board when valid" do
     board = @board 
-    assert validate_move(board, "1", "X", @player) == ["X", 2, 3, 4, 5, 6, 7, 8, 9]
+    assert validate_move(board, "1", @player) == ["X", 2, 3, 4, 5, 6, 7, 8, 9]
   end
 end

@@ -30,4 +30,11 @@ defmodule BoardTest do
                                             4, 5, 6, 
                                             7, 8, 9]
   end
+
+  test "position is not available" do
+    board = ["X", 2, 3,
+              4, 5, 6,
+              7, 8, 9]
+    refute available_position?(board, 0)
+  end
 end

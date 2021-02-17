@@ -1,31 +1,6 @@
-defmodule Validators do
+defmodule Validator do
   import Ui
   import Board, only: [available_position?: 2, set_token_at: 3]
-
-  defprotocol(PlayerInstruction, do: def(get_instruction(player)))
-
-  defimpl PlayerInstruction, for: HumanPlayer do
-    def get_instruction(_human_player) do
-      "Select a position between 1 and 9"
-    end
-  end
-
-  defimpl PlayerInstruction, for: ComputerPlayer do
-    def get_instruction(_computer_player) do
-      "Computer's turn"
-    end
-  end
-
-  defprotocol PlayerInvalid do
-    @fallback_to_any true
-    def get_invalid_instruction(player)
-  end
-
-  defimpl PlayerInvalid, for: Any do
-    def get_invalid_instruction(_) do
-      "Invalid move, try again"
-    end
-  end
 
   def validate_move(board, position, token, player) do
     if valid_move?(board, position) do
@@ -42,7 +17,7 @@ defmodule Validators do
   end
 
   def handle_invalid_move(player) do
-    print_invalid_player_move(PlayerInvalid.get_invalid_instruction(player))
+    print_invalid_player_move(PlayerInvalidInstruction.get_invalid_instruction(player))
     print_player_instructions(PlayerInstruction.get_instruction(player))
   end
 

@@ -1,7 +1,7 @@
 defmodule ValidatorsTest do
   use ExUnit.Case, async: true
   import ExUnit.CaptureIO
-  import Validators   
+  import Validator 
   import Player
   import HumanPlayer
 

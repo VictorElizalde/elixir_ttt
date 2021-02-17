@@ -6,31 +6,6 @@ defmodule UiTest do
   import ComputerPlayer
   import ExUnit.CaptureIO
 
-  defprotocol(PlayerInstruction, do: def(get_instruction(player)))
-
-  defimpl PlayerInstruction, for: HumanPlayer do
-    def get_instruction(_human_player) do
-      "Select a position between 1 and 9"
-    end
-  end
-
-  defimpl PlayerInstruction, for: ComputerPlayer do
-    def get_instruction(_computer_player) do
-      "Computer's turn"
-    end
-  end
-
-  defprotocol PlayerInvalid do
-    @fallback_to_any true
-    def get_invalid_instruction(player)
-  end
-
-  defimpl PlayerInvalid, for: Any do
-    def get_invalid_instruction(_) do
-      "Invalid move, try again"
-    end
-  end
-
   @human  create_player("X", "human")
   @computer create_player("O", "computer")
 
@@ -54,7 +29,7 @@ defmodule UiTest do
 
   test "prints invalid move" do
     assert capture_io(fn ->
-      print_invalid_player_move(PlayerInvalid.get_invalid_instruction(@human))
+      print_invalid_player_move(PlayerInvalidInstruction.get_invalid_instruction(@human))
     end) == "Invalid move, try again\n"
   end
 

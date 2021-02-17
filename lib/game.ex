@@ -2,7 +2,7 @@ defmodule Game do
   import Board, only: [new_board: 1]
   import Referee, only: [game_over?: 1, winning_game?: 1]
   import Player, only: [create_player: 2]
-  import Integer, only: [is_even: 1]
+  import PlayerTurn, only: [player_x_turn?: 1]
   import Ui
   import PlayerMove
 
@@ -23,7 +23,9 @@ defmodule Game do
   
   def get_next_move(board, player_x, player_o) do
     print_player_instructions(PlayerInstruction.get_instruction(current_player(board, player_x, player_o)))
-    print_board(board)
+    if current_player(board, player_x, player_o) == player_x do
+      print_board(board)
+    end
     current_player(board, player_x, player_o) |> make_move(board)
   end
 
@@ -40,19 +42,7 @@ defmodule Game do
     end
   end
 
-  def current_player_token(board) do
-    if player_x_turn?(board), do: "X", else: "O"
-  end
-
   def winning_token(board) do
     if player_x_turn?(board), do: "O", else: "X"
-  end
-
-  def player_x_turn?(board) do
-    Enum.filter(board, fn(position) -> has_token?(position) end) |> length |> is_even
-  end
-
-  def has_token?(position) do
-    !is_integer(position)
   end
 end

@@ -3,7 +3,6 @@ defmodule UiTest do
   import Ui
   import Player
   import HumanPlayer
-  import ComputerPlayer
   import ExUnit.CaptureIO
 
   @human  create_player("X", "human")

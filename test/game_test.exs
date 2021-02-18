@@ -8,12 +8,12 @@ defmodule GameTest do
 
   test "returns player with X token" do
     board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    assert current_player(board, @player_x, @player_o) == @player_x
+    assert current_player(board, @player_x, @player_o) == @player_o
   end
   
   test "returns player with O token" do
     board = ["X", 2, 3, 4, 5, 6, 7, 8, 9]
-    assert current_player(board, @player_x, @player_o) == @player_o
+    assert current_player(board, @player_x, @player_o) == @player_x
   end
 
   test "prints tie game message for tie board" do
@@ -25,19 +25,19 @@ defmodule GameTest do
 
   test "prints winning game message for X" do
      board = ["X", "O", 3,
-              "X", "O", "O",
+              "O", "O", "O",
               "X", "X", 9]
      assert capture_io(fn ->
        game_over_message(board)
-     end) == "| X | O | 3 |\n| X | O | O |\n| X | X | 9 |\nWinner is X!\n"
+     end) == "| X | O | 3 |\n| O | O | O |\n| X | X | 9 |\nWinner is O!\n"
   end
 
   test "prints winning game message for O" do
      board = ["O", "O", 3,
-              "X", "O", "X",
-              "X", "X", "O"]
+              "X", "O", "O",
+              "X", "X", "X"]
      assert capture_io(fn ->
        run_turns(board, @player_x, @player_o)
-     end) == "| O | O | 3 |\n| X | O | X |\n| X | X | O |\nWinner is O!\n"
+     end) == "| O | O | 3 |\n| X | O | O |\n| X | X | X |\nWinner is X!\n"
   end
 end

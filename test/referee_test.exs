@@ -57,4 +57,11 @@ defmodule RefereeTest do
              7, 8, 9]
     refute game_over?(board)
   end
+
+  test "lists indexes of all available moves" do	
+    board = ["X", 2, 3, 	
+              4, 5, 6, 	
+              7, 8, 9]	
+    assert available_moves(board) == [1, 2, 3, 4, 5, 6, 7, 8]	
+  end
 end

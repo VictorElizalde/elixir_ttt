@@ -62,4 +62,8 @@ defmodule Board do
   def available_position?(board, position_index) do
     Enum.at(board, position_index - 1) |> is_integer
   end
+
+  def empty_board?(board) do
+    Enum.all?(board, fn(x) -> is_integer(x) end)
+  end
 end
